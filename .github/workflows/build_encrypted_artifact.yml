@@ -1,6 +1,6 @@
-name: Build and Upload as encrypted artifact manual dispatch
+name: Build and Upload as Encrypted Artifact (Manual Dispatch)
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
 
-      - name: Build project with unity
+      - name: Build project with Unity
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -40,24 +40,26 @@ jobs:
           versioning: Semantic
           buildName: Trier_25 # Change title for other workflows
 
-      - name: Checkout scripts
-        uses: actions/checkout@v4
-        with:
-          path: ./extern
-          sparse-checkout: scripts
-          sparse-checkout-cone-mode: false
-
       - name: Zip folder
-        run: ./extern/scripts/zip.sh
+        run: |
+          if [ -d "$FOLDER" ]; then
+            zip -r "$FOLDER.zip" "$FOLDER"
+          else
+            echo "Error: Folder $FOLDER does not exist."
+            exit 1
+          fi
         env:
           FOLDER: build
 
       - name: Encrypt build
-        run: ./extern/scripts/encrypt.sh
+        run: |
+          gpg --quiet --batch --yes --symmetric --cipher-algo AES256 --passphrase="$PASSPHRASE" --output "$FILE.enc" "$FILE"
+          rm "$FILE"
+          echo "File encrypted successfully."
         env:
           PASSPHRASE: ${{ secrets.ARTIFACTS_PASSPHRASE }}
           FILE: ./build.zip
-          
+
       - name: Upload build results as artifact
         uses: actions/upload-artifact@v4
         with:
