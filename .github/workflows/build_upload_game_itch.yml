@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: gdw-tum/trier-25 # Change title for other workflows
-          token: ${{ secrets.ACCESS_TOKEN_LUMI }}
+          token: ${{ secrets.ACCESS_TOKEN_REPO }}
 
       - name: Cache files for faster build
         uses: actions/cache@v4
