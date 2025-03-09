@@ -1,4 +1,4 @@
-name: Nightly build for Trier GDD for different platforms
+name: Evey 15 minute check new commits/build for Trier GDD for different platforms
 
 on: 
   workflow_dispatch:
