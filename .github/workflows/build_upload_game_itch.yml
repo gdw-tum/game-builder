@@ -1,4 +1,4 @@
-name: Every 30 minute check new commits/build for Trier GDD for different platforms
+name: Every 30 minutes check new commits/build for Trier GDD for different platforms
 
 on: 
   workflow_dispatch:
