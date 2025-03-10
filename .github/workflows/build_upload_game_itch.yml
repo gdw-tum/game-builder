@@ -1,4 +1,4 @@
-name: Evey 15 minute check new commits/build for Trier GDD for different platforms
+name: Every 15 minute check new commits/build for Trier GDD for different platforms
 
 on: 
   workflow_dispatch:
@@ -42,7 +42,7 @@ jobs:
           - StandaloneWindows64
           - StandaloneLinux64
           - StandaloneOSX
-          # - WebGL
+          - WebGL
     steps:
       - name: Checkout private repository
         uses: actions/checkout@v4
@@ -89,7 +89,7 @@ jobs:
           - StandaloneWindows64
           - StandaloneLinux64
           - StandaloneOSX
-          # - WebGL
+          - WebGL
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
