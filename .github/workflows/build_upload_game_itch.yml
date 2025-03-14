@@ -20,7 +20,7 @@ jobs:
       - name: Get new commits
         id: evaluate
         run: | # Change the time here according to your cron schedule # 
-          NEW_COMMIT_COUNT=$(git log --oneline --since '30 minutes ago' | wc -l)
+          NEW_COMMIT_COUNT=$(git log --oneline --since '60 minutes ago' | wc -l)
           echo "New commit count: $NEW_COMMIT_COUNT"
           if [ "$NEW_COMMIT_COUNT" -gt 0 ] || [ "${{ github.event_name }}" == 'workflow_dispatch' ]; then
             echo "continue=true" >> $GITHUB_OUTPUT
