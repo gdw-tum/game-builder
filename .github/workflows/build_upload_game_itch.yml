@@ -17,6 +17,7 @@ jobs:
         with:
           repository: ${{ vars.REPO_NAME }} # Change title for other workflows
           token: ${{ secrets.ACCESS_TOKEN_REPO }}
+          ref: live-build
       - name: Get new commits
         id: evaluate
         run: | # Change the time here according to your cron schedule # 
@@ -49,6 +50,7 @@ jobs:
         with:
           repository: ${{ vars.REPO_NAME }} # Change title for other workflows
           token: ${{ secrets.ACCESS_TOKEN_REPO }}
+          ref: live-build
 
       - name: Cache files for faster build
         uses: actions/cache@v4
