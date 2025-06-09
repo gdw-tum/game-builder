@@ -17,11 +17,11 @@ jobs:
         with:
           repository: ${{ vars.REPO_NAME }} # Change title for other workflows
           token: ${{ secrets.ACCESS_TOKEN_REPO }}
-          # ref: live-build
+          ref: deploy-build
       - name: Get new commits
         id: evaluate
         run: | # Change the time here according to your cron schedule # 
-          NEW_COMMIT_COUNT=$(git log --oneline --since '59 minutes ago' | wc -l)
+          NEW_COMMIT_COUNT=$(git log --oneline --since '60 minutes ago' | wc -l)
           echo "New commit count: $NEW_COMMIT_COUNT"
           if [ "$NEW_COMMIT_COUNT" -gt 0 ] || [ "${{ github.event_name }}" == 'workflow_dispatch' ]; then
             echo "continue=true" >> $GITHUB_OUTPUT
@@ -50,7 +50,7 @@ jobs:
         with:
           repository: ${{ vars.REPO_NAME }} # Change title for other workflows
           token: ${{ secrets.ACCESS_TOKEN_REPO }}
-          # ref: live-build
+          ref: deploy-build
 
       - name: Cache files for faster build
         uses: actions/cache@v4
