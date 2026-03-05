@@ -39,10 +39,10 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform: # see https://docs.unity3d.com/ScriptReference/BuildTarget.html
-          - StandaloneWindows
+          # - StandaloneWindows
           - StandaloneWindows64
-          - StandaloneLinux64
-          - StandaloneOSX
+          # - StandaloneLinux64
+          # - StandaloneOSX
           - WebGL
     steps:
       - name: Checkout private repository
@@ -88,10 +88,10 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneWindows
+          # - StandaloneWindows
           - StandaloneWindows64
-          - StandaloneLinux64
-          - StandaloneOSX
+          # - StandaloneLinux64
+          # - StandaloneOSX
           - WebGL
     steps:
       - name: Download artifact
