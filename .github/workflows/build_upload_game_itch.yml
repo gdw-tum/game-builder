@@ -3,7 +3,7 @@ name: Every 60 minutes check new commits/build from repo for different platforms
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '*/60 * * * *' # TODO change cron job to every 15 minutes?
+    - cron: '3 */6 * * *' # TODO change cron job to every 15 minutes?
 
 jobs:
   check:
