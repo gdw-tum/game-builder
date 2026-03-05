@@ -79,6 +79,7 @@ jobs:
           path: build/${{ matrix.targetPlatform }}
 
   publish:
+    if: vars.PUBLISH_TO_ITCH == 'true'
     name: Uploading to itch.io for ${{ matrix.targetPlatform }}
     needs: 
       - build
