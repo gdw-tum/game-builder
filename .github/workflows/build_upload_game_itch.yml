@@ -112,7 +112,8 @@ jobs:
 
   cleanup:
     name: Deleting uploaded artifacts
-    if: always()
+    if: vars.PUBLISH_TO_ITCH == 'true'
+    # if: always()
     needs:
       - publish
     runs-on: ubuntu-latest
