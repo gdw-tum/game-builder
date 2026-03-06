@@ -3,7 +3,7 @@ name: Every 60 minutes check new commits/build from repo for different platforms
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '3 */6 * * *' # TODO change cron job to every 15 minutes?
+    - cron: '17 * * * *' # TODO change cron job to every 15 minutes?
 
 jobs:
   check:
@@ -39,10 +39,10 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform: # see https://docs.unity3d.com/ScriptReference/BuildTarget.html
-          # - StandaloneWindows
+          - StandaloneWindows
           - StandaloneWindows64
-          # - StandaloneLinux64
-          # - StandaloneOSX
+          - StandaloneLinux64
+          - StandaloneOSX
           - WebGL
     steps:
       - name: Checkout private repository
@@ -88,10 +88,10 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          # - StandaloneWindows
+          - StandaloneWindows
           - StandaloneWindows64
-          # - StandaloneLinux64
-          # - StandaloneOSX
+          - StandaloneLinux64
+          - StandaloneOSX
           - WebGL
     steps:
       - name: Download artifact
